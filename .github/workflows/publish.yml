@@ -8,7 +8,7 @@ on:
 jobs:
   publish:
     name: Publish
-    runs-on: windows-2019
+    runs-on: windows-2022
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -16,10 +16,16 @@ jobs:
       - name: Build
         run: |
           nuget restore
-          cd .\Mediapipe.Net\  
+          cd .\Mediapipe.Net\
           dotnet build .\Mediapipe.Net.csproj
           nuget.exe pack .\Mediapipe.Net.csproj -symbols
+          
+          # nuget packages
           nuget push *.nupkg ${{secrets.NUGET_TOKEN}} -Source https://api.nuget.org/v3/index.json -SkipDuplicate
+          
+          # github packages
+          nuget sources Add -Name "GitHub" -Source "https://nuget.pkg.github.com/${{ github.repository_owner }}/index.json" -Username "${{ github.actor }}" -Password "${{ secrets.GITHUB_TOKEN }}"
+          nuget push *.nupkg -Source "GitHub"
           7z a -tzip output.zip bin/debug/*
 
       - name: Upload Artifact

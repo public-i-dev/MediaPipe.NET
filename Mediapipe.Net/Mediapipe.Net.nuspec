@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <package >
   <metadata>
-    <id>MediaPipe.Net.kaymyst</id>
+    <id>MediaPipe.Net.public-i-dev</id>
     <version>$version$</version>
-    <title>MediaPipe.Net.kaymyst</title>
-    <authors>kaymyst</authors>
+    <title>MediaPipe.Net.public-i-dev</title>
+    <authors>kaymyst;public-i-dev</authors>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <license type="expression">MIT</license>
     <readme>docs\README.md</readme>
-	<projectUrl>https://github.com/kaymyst/MediaPipe.NET</projectUrl>
+	<projectUrl>https://github.com/public-i-dev/MediaPipe.NET</projectUrl>
     <description>media pipe in .net framework</description>
     <releaseNotes>First release.</releaseNotes>
     <copyright>$copyright$</copyright>
